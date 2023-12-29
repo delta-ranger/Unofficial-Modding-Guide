@@ -47,8 +47,8 @@ If you would like to see what its like to make a map for Ready or Not, I recorde
 
 1. Create a Folder anywhere and name it whatever you want. This will be the folder you need to extract the following files into. I will refer to this folder as `RoNTemplate`. 
 2. Download and Extract the following into `RoNTemplate`
-a. https://drive.google.com/file/d/17uyZ_hrklBIN1ci88GajcnT1pOeFQJGx/view?usp=sharing
-b. https://drive.google.com/file/d/1BsavVwAYh6kq7hUs9wD3o2A5_nY6rWn6/view?usp=sharing
+  * https://drive.google.com/file/d/17uyZ_hrklBIN1ci88GajcnT1pOeFQJGx/view?usp=sharing
+  * https://drive.google.com/file/d/1BsavVwAYh6kq7hUs9wD3o2A5_nY6rWn6/view?usp=sharing
 3. Download the following Hotfix. **DELETE** your `/plugins/` folder within `RoNTemplate` and then Extract the contents of the hotfix to `RoNTemplate`
 a. https://drive.google.com/file/d/1IAD9qjTfN2JJ5yBUZ3R9Jhzi8R0YdgCS/view?usp=sharing 
 4. Open `RoNTemplate` and open the `ReadyOrNot.uproject`. This will launch the Project and may take a couple of minutes to load if this is your first time using Unreal. Just be patient.
@@ -198,7 +198,7 @@ Packaging will turn our cooked content into a single and compressed file that we
 9. Your map should now be able to be played in-game
 
 This is an example of what a Staging folder can look like:
-![Staging Folder Example](/assets/gettingstarted/StagingExample.png)
+![Staging Folder Example](/assets/gettingstarted/AssetsToCook.png)
 
 >You will be jumping between these folders a lot, I really recommend putting your Staging folder, Project Cooked folder Ready or Not Pak directory to your Quick Access bar.
 {: .prompt-tip }
