@@ -47,10 +47,10 @@ If you would like to see what its like to make a map for Ready or Not, I recorde
 
 1. Create a Folder anywhere and name it whatever you want. This will be the folder you need to extract the following files into. I will refer to this folder as `RoNTemplate`. 
 2. Download and Extract the following into `RoNTemplate`
-  * https://drive.google.com/file/d/17uyZ_hrklBIN1ci88GajcnT1pOeFQJGx/view?usp=sharing
-  * https://drive.google.com/file/d/1BsavVwAYh6kq7hUs9wD3o2A5_nY6rWn6/view?usp=sharing
+    * https://drive.google.com/file/d/17uyZ_hrklBIN1ci88GajcnT1pOeFQJGx/view?usp=sharing
+    * https://drive.google.com/file/d/1BsavVwAYh6kq7hUs9wD3o2A5_nY6rWn6/view?usp=sharing
 3. Download the following Hotfix. **DELETE** your `/plugins/` folder within `RoNTemplate` and then Extract the contents of the hotfix to `RoNTemplate`
-a. https://drive.google.com/file/d/1IAD9qjTfN2JJ5yBUZ3R9Jhzi8R0YdgCS/view?usp=sharing 
+    * https://drive.google.com/file/d/1IAD9qjTfN2JJ5yBUZ3R9Jhzi8R0YdgCS/view?usp=sharing 
 4. Open `RoNTemplate` and open the `ReadyOrNot.uproject`. This will launch the Project and may take a couple of minutes to load if this is your first time using Unreal. Just be patient.
 
 >**HELP! I Get 100s of errors when I load up the project!**
@@ -100,8 +100,9 @@ Content
         * Technically not needed, but without it the map will automatically complete when you play it and you wont be able to test it.
         * You can use the `AISpawn` actor, but Reap's one has some better control
 
-### Additional Things to Add
-#### Lighting
+## Additional Things 
+
+### Lighting
 Currently your level doesn't have any light, so we should set up the basic stuff so we can actually see when we playtest it. Add the following:
 - [ ] Lightmass Importance Volume and adjust it to cover the playable area
 - [ ] 1 Directional Light to act as a Sun/Moon
@@ -114,7 +115,7 @@ Currently your level doesn't have any light, so we should set up the basic stuff
 - [ ] 1 Reflection Probe that encompasses the map
     * Without build reflections, the models/guns in game can look flat and not lit properly.
 
-#### Configuring the AISpawn
+### AISpawns
 The 2 `BP_AISpawn_Reap_V1` that we placed down are not configured yet, so lets do that by adding a Civilian and Suspect:
 1. Select an AISpawn and under `AISpawn > Spawn Array` press the `+` symbol
 2. Expand the new array element and also expand `Spawned AI`
@@ -123,11 +124,12 @@ The 2 `BP_AISpawn_Reap_V1` that we placed down are not configured yet, so lets d
 4. Select the other AISpawn and follow the same steps but change the `Row Name` to `Suspect_01_Shotgun`
 
 Your AISpawn details should look something similar to this:
+
 ![AISpawn Detail Example](/assets/gettingstarted/AISpawnDetailExample.png)
 
 You can select any Data Table and Row Name for your map and you are not restricted to 1 Data Table. You will need to experiment to see what you will want in your map as all the AI behaves differently.
 
-#### Doors
+### Doors
 Doors are pretty simple to place down into your map. 
 1. Under `Place Actors` search for `BP_Door_Reap_V1` and place it into your level
 2. Within the Details panel, change the `Door Type > Row Name` to the sort of Door you would like
@@ -139,13 +141,10 @@ Doors are pretty simple to place down into your map.
 >For Doors to actually work and AI to stack up and use them properly, it seems to require that the door be connected to an actual 'Room-like' structure (ie: enclosed by 3-4 walls). It's unclear on the requirements of them at the moment, but the way the AI handles doors, stacking and clearing is done via the world generation when you first load the map in-game.
 {: .prompt-info }
 
-
 ### LevelData
 LevelData will show you how your map will look in the Level/Mission Select screen. Currently LevelData does not work and we are waiting for a patch from VOID. 
 
-## Packaging your Map
-
-### Building / Baking
+## Building / Baking
 If you've been following along so far, then you probably have not built your map. Building a map fixes up changes in Geometry & Volumes, Lighting & Reflections and Pathing.
 
 To build your map you simply press the `Build` button on the toolbar. Building times can vary, but the largest determining factor is usually Lighting. As map size increases and the quality of Lighting is changed, builds can take anywhere from 2mins all the way up to 6hrs and longer. At the moment the map should probably only take a couple of seconds. 
@@ -154,21 +153,21 @@ You can change the lighting quality if you press the drop-down on the Build butt
 
 Once the build completes, You should `File > Save All`.
 
-### Cooking
+## Cooking
 Cooking is the process of turning the project into content that can be deployed on other machines. We also only want cook content that is only important for the map to keep file size small. We need to configure this first:
 
 1. Go to `Edit > Project Settings` and on the side tab select `Project > Packaging`
 2. Under `Packaging > List of maps to include in a packaged build` you should see an element that shows the directory for Reap's `Example.umap`. We want to replace this entry with the directory of our Map.umap. 
 3. Press the `+` and create another entry here and navigate to your map's BuildData, it should be in the exact same location as your map.
 4. You do not need to change any settings and it should look something like this:
-![Packaging Settings Example](/assets/gettingstarted/AISpawnDetailExample.png)
+![Packaging Settings Example](/assets/gettingstarted/AssetsToCook.png)
 5. Make sure you Save All before proceeding
 6. Select `File > Cook Content for Windows`
     * This could take some time for your first cook as it compiles all the shaders. Just be patient.
 
 You should hear it succeed, but a message will not remain on screen when it completes. If it failed the notification will stay on the screen
 
-### Packaging & Installing your Map
+## Packaging & Installing your Map
 Packaging will turn our cooked content into a single and compressed file that we can actually use to play in game and distribute to other people. 
 
 >There are a bunch of Unreal packers out in the wild, but only use the following method for maps.
@@ -198,7 +197,7 @@ Packaging will turn our cooked content into a single and compressed file that we
 9. Your map should now be able to be played in-game
 
 This is an example of what a Staging folder can look like:
-![Staging Folder Example](/assets/gettingstarted/AssetsToCook.png)
+![Staging Folder Example](/assets/gettingstarted/StagingExample.png)
 
 >You will be jumping between these folders a lot, I really recommend putting your Staging folder, Project Cooked folder Ready or Not Pak directory to your Quick Access bar.
 {: .prompt-tip }
